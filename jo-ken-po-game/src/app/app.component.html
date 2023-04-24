@@ -4,5 +4,8 @@
 
   <h3>Please, connect your wallet to start your game</h3>
 
-  <button>Connect now!</button>
+  <div *ngIf="doesUserHaveWalletProvider(); else installMetamask">
+    <button>Connect now!</button>
+  </div>
+  <ng-template #installMetamask>install Metamask</ng-template>
 </section>
