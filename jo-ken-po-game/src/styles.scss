@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+//_base.scss 
+
+@font-face {
+    font-family: "pixel-art";
+    src: url("./assets/fonts/pixel-art/pixelart.ttf");
+ }
+
+body {
+    font-family: "pixel-art";
+}
