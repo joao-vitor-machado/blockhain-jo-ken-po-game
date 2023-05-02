@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import detectEthereumProvider from '@metamask/detect-provider';
+import { WalletService } from './services/wallet.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,23 @@ import detectEthereumProvider from '@metamask/detect-provider';
 })
 export class AppComponent {
   title = 'jo-ken-po-game';
+  hasMetamaskInstalled : boolean;
 
-  // constructor(private window: Window) {}
+  constructor(private walletService : WalletService) {
+    this.hasMetamaskInstalled = false;
+  }
 
-  public doesUserHaveWalletProvider() {
-    return (window as any).ethereum;
+  async ngOnInit() {
+    console.log("foi")
+    this.doesUserHaveWalletProvider().then(
+      (thereIsWalletResult) => {
+        this.hasMetamaskInstalled = thereIsWalletResult;
+      }
+    );
+  }
+
+  public async doesUserHaveWalletProvider() : Promise<boolean> {
+    let nada = await this.walletService.detectEthProvider();
+    return nada != null ? true : false;
   }
 }
