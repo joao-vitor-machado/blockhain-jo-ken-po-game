@@ -6,7 +6,7 @@
 
   <!-- {{doesUserHaveWalletProvider()}} -->
 
-  <div *ngIf="hasMetamaskInstalled; else installMetamask">
+  <div *ngIf="ethereumProvider != null; else installMetamask">
       <button class="btn btn-primary">Connect now!</button>
   </div>
   <ng-template #installMetamask>install Metamask</ng-template>
